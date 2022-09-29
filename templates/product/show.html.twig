@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Produit : {{product.name}}
+{% endblock title %}
+{% block body %}
+ {% for rubrique, messages in app.flashes %}
+     <div class="alert alert-{{ rubrique }}">
+     {% for message in messages %}
+         <p>{{ message }}</p>
+     {% endfor %}
+    </div>
+ {% endfor %} 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{path('homepage')}}">Acceuil</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('product_category',{'slug':product.category.slug})}}">{{product.category.name}}</a></li>
+    <li class="breadcrumb-item active">{{product.name}}</li>
+  </ol>
+  <br>
+<h3>{{product.name}} ({{product.price / 100}} &euro; )</h>
+    <br><br>
+    <div class="row">
+        <div class="col-5"> 
+             <img src="{{product.mainPicture}}" alt="Image de {{product.name}}">
+        </div>
+        <div class="col">
+            <span class="badge bg-primary">{{product.category.name}}</span>
+            <br><br>
+            <p>{{product.shortDescription}}</p>
+            <br>
+            <a href="{{ path('cart_add',{id:product.id}) }}" class="btn btn-success btn-lg">
+                <i class="fas fa-shopping-cart"></i>
+                Ajouter au panier
+            </a>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Acceuil
+{% endblock title  %}
+{% block body %}
+   <h1>Nos Produits Phars</h1>
+   <div class="row">
+       {% for product in products %}
+       <div class="col">
+           {% include "product/_product_card.html.twig" with {'p': product} %}
+       </div>
+       {% endfor %}
+   </div>
+   <h2>Un service irraprochable</h2>
+   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui dolor perspiciatis vel pariatur minima dolores.</p>
+   <div class="row">
+       {% include "shared/_assurance.html.twig" with {
+           'color':'primary',
+           'icone':'fas fa-truck',
+           'text': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut hic aliquid nesciunt minus."
+       } %}
+       {% include "shared/_assurance.html.twig" with {
+        'color':'success',
+        'icone':'fas fa-check',
+        'text': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut hic aliquid nesciunt minus."
+    } %}
+    {% include "shared/_assurance.html.twig" with {
+        'color':'warning',
+        'icone':'fas fa-lock',
+        'text': "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut hic aliquid nesciunt minus."
+    } %}
+   </div>
+
+{% endblock body %}
